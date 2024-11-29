@@ -1,6 +1,7 @@
 ﻿@model BookStore.Models.ViewModels.ProductVM
 
 <form method="post" asp-action="Upsert" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Product.Id"/>
     <div class="border p-3 mt-4 row">
         <div class="row pb-2">
             <h2 class="text-primary">@(Model.Product.Id != 0 ? "Wijzig product" : "Product toevoegen")</h2>
@@ -13,7 +14,7 @@
         </div>
         <div class="mb-3">
             <label asp-for="Product.Description"></label>
-            <input asp-for="Product.Description" class="form-control" />
+            <textarea asp-for="Product.Description" class="form-control"></textarea>
             <span asp-validation-for="Product.Description" class="text-danger"></span>
         </div>
         <div class="mb-3 col-6">
@@ -46,10 +47,14 @@
             <input asp-for="Product.Price100" class="form-control" />
             <span asp-validation-for="Product.Price100" class="text-danger"></span>
         </div>
-        <div class="mb-3">
+        <div class="mb-3 col-6">
             <label asp-for="Product.ImageUrl"></label>
             <input type="file" class="form-control" name="file" id="fileUpload" />
             <span asp-validation-for="Product.ImageUrl" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label class="col-12">Gekozen Kaft</label>
+            <img src="@Url.Content(Model.Product.ImageUrl)" class="card-img form-control" style="width: 50%;" alt="Alternate Text" />
         </div>
         <div class="mb-3 col-6">
             <label asp-for="Product.CategoryId"></label>
@@ -75,7 +80,7 @@
             {
                 <button type="submit" class="btn btn-primary" style="width:250px">Wijzigen</button>
             }
-            <a asp-controller="Product" asp-action="Upsert" class="btn btn-secondary" style="width:250px">
+            <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="width:250px">
                 Terug naar overzicht
             </a>
         </div>

@@ -11,39 +11,49 @@ namespace BookStore.Models
     {
         public int Id { get; set; }
 
-        [Required, MaxLength(100), Display(Name = "Titel")]
+        [Required(ErrorMessage = "{0} is een verplicht veld")]
+        [MaxLength(100, ErrorMessage = "{0} mag maximaal {1} tekens bevatten")]
+        [Display(Name = "Titel")]
         public string Title { get; set; } = string.Empty;
 
         [Display(Name = "Omschrijving")]
         public string? Description { get; set; }
 
-        [Required, RegularExpression(@"^(?=(?:\D*\d){10}(?:\D*\d{3})?$)[\d-]+$")]
+        [Required(ErrorMessage = "{0} is een verplicht veld")]
+        [RegularExpression(@"^(?=(?:\D*\d){10}(?:\D*\d{3})?$)[\d-]+$")]
         public string ISBN { get; set; } = string.Empty;
 
-        [Required, MaxLength(100), Display(Name = "Schrijver")]
+        [Required(ErrorMessage = "{0} is een verplicht veld")]
+        [MaxLength(100), Display(Name = "Schrijver")]
         public string Author { get; set; } = string.Empty;
 
-        [Required, Display(Name = "Catalogusprijs")]
+        [Required(ErrorMessage = "{0} is een verplicht veld")]
+        [Display(Name = "Catalogusprijs")]
         public double ListPrice { get; set; }
 
-        [Required, Display(Name = "Prijs")]
+        [Required(ErrorMessage = "{0} is een verplicht veld")]
+        [Display(Name = "Prijs")]
         public double Price { get; set; }
 
-        [Required, Display(Name = "Prijs bij 50+ afname")]
+        [Required(ErrorMessage = "{0} is een verplicht veld")]
+        [Display(Name = "Prijs bij 50+ afname")]
         public double Price50 { get; set; }
 
-        [Required, Display(Name = "Prijs bij 100+ afname")]
+        [Required(ErrorMessage = "{0} is een verplicht veld")]
+        [Display(Name = "Prijs bij 100+ afname")]
         public double Price100 { get; set; }
 
         public string? ImageUrl { get; set; }
 
 
         // Navigation Properties
-        [Required, Display(Name = "Categorie")]
+        [Required(ErrorMessage = "{0} is een verplicht veld")]
+        [Display(Name = "Categorie")]
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
 
-        [Required, Display(Name = "Soort Kaft")]
+        [Required(ErrorMessage = "{0} is een verplicht veld")]
+        [Display(Name = "Soort Kaft")]
         public int CoverTypeId { get; set; }
         public CoverType? CoverType { get; set; }
     }

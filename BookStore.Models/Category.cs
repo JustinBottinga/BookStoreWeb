@@ -16,6 +16,6 @@ namespace BookStore.Models
         [Display(Name="Aanmaakdatum")]
         public DateTime CreatedDateTime { get; set; } = DateTime.Now;
 
-        public List<Product> Products { get; set; }
+        public List<Product>? Products { get; set; }
     }
 }

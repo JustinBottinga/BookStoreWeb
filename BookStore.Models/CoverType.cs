@@ -9,9 +9,9 @@ namespace BookStore.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "{0} is een verplicht veld")]
         [DisplayName("Soort Kaft")]
-        [MaxLength(50)]
+        [MaxLength(50, ErrorMessage = "{0} mag maximaal {1} tekens bevatten")]
         public string Name { get; set; }
     }
 }
